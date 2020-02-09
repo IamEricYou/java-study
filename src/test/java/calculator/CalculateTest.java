@@ -7,11 +7,6 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class CalculateTest {
 
-    @Before
-    public void create(){
-        Calculate calculate2 = new Calculate();
-    }
-
     @Test
     public void addtionTest() {
         Calculate calculate = new Calculate();
