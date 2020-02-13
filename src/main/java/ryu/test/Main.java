@@ -18,5 +18,6 @@ public class Main {
 //        racingGame.run();
 //
 //        scanner.close();
+    	System.out.println("Hello world");
      }
 }

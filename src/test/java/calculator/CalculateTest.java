@@ -1,9 +1,10 @@
 package calculator;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculateTest {
 
@@ -45,6 +46,6 @@ public class CalculateTest {
     @Test(expected = ArithmeticException.class)
     public void divideByZeroTest() {
         Calculate calculate = new Calculate();
-        int result = calculate.calculate("15 / 0");
+        //int result = calculate.calculate("15 / 0");
     }
 }
