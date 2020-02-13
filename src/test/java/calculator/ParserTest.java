@@ -22,10 +22,11 @@ public class ParserTest {
     }
 
     @Test
-    public void getFalseIfInputIsNullOrEmptyTest(){
-        assertThat(parser.isNotEmpty(" ")).isEqualTo(false);
-        assertThat(parser.isNotEmpty(null)).isEqualTo(false);
-        assertThat(parser.isNotEmpty("Hi Hello")).isEqualTo(true);
+    public void checkIfStringListIsEmptyOrNull(){
+        equation.add("");
+        equation.add(null);
+        assertThat(parser.isNotEmpty(equation)).isEqualTo(false);
+        assertThat(parser.isNotEmpty(equation)).isEqualTo(false);
     }
 
     @Test

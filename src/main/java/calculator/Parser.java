@@ -10,10 +10,8 @@ public class Parser {
 
     private static final String BLANK_PATTERN = "\\s* \\s*";
     private static final String BLANK = " ";
-    public boolean isNotEmpty(String s) {
-        //try to invoke it on a null reference, I'll get a NullPointerException.
-        //Equals - compares two strings null-safe
-        if(s == null || BLANK.equals(s)){
+    public boolean isNotEmpty(List<String> text) {
+        if(text.contains(null) || text.contains("")){
             return false;
         }
         return true;
