@@ -26,7 +26,7 @@ public class ParserTest {
 
     @Test
     public void splitCommaTest(){
-        assertThat(parser.splitByBlank("Hello World")[0]).isEqualTo("Hello");
-        assertThat(parser.splitByBlank("Hello World")[1]).isEqualTo("World");
+        assertThat(parser.splitByBlank("Hello World").get(0)).isEqualTo("Hello");
+        assertThat(parser.splitByBlank("Hello World").get(1)).isEqualTo("World");
     }
 }

@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Parser {
 
     public boolean isNotEmptyOrNull(String s) {
@@ -10,7 +13,8 @@ public class Parser {
         return true;
     }
 
-    public String[] splitByBlank(String text) {
-        return text.split(" ");
+    public List<String> splitByBlank(String text) {
+
+        return Arrays.asList(text.split("\\s* \\s*"));
     }
 }
