@@ -3,6 +3,8 @@ package calculator;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,10 +13,12 @@ import static org.junit.Assert.*;
 public class ParserTest {
 
     private Parser parser;
+    private List<String> equation;
 
     @Before
     public void setUp() throws Exception {
         parser = new Parser();
+        equation = new ArrayList<>();
     }
 
     @Test
@@ -28,5 +32,13 @@ public class ParserTest {
     public void splitCommaTest(){
         assertThat(parser.splitByBlank("Hello World").get(0)).isEqualTo("Hello");
         assertThat(parser.splitByBlank("Hello World").get(1)).isEqualTo("World");
+    }
+
+    @Test
+    public void extractNumFromStringEquation(){
+        equation = parser.splitByBlank("4 + 8 + 7");
+        assertThat(parser.getNumbersFromEquation(equation).get(0)).isEqualTo("4");
+        assertThat(parser.getNumbersFromEquation(equation).get(1)).isEqualTo("8");
+        assertThat(parser.getNumbersFromEquation(equation).get(2)).isEqualTo("7");
     }
 }
