@@ -38,10 +38,17 @@ public class Parser {
     public List<String> getOperatorsFromEquation(List<String> equation) {
         List<String> operatorList = new ArrayList<>();
         //Numbers are placed on only odd index.
-
         for(int i = 1; i < equation.size(); i = i+2){
             operatorList.add(equation.get(i));
         }
         return operatorList;
+    }
+
+    public List<Integer> convertStringListToIntList(List<String> stringNumList) {
+        List<Integer> numList = new ArrayList<>();
+        for(String numString : stringNumList){
+            numList.add(Integer.parseInt(numString));
+        }
+        return numList;
     }
 }

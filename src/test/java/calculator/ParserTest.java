@@ -48,4 +48,12 @@ public class ParserTest {
         assertThat(parser.getOperatorsFromEquation(equation).get(0)).isEqualTo("+");
         assertThat(parser.getOperatorsFromEquation(equation).get(1)).isEqualTo("*");
     }
+
+    @Test
+    public void convertStringListToIntListTest(){
+        equation = parser.splitByBlank("4 5 9 0 1");
+        assertThat(parser.convertStringListToIntList(equation).get(0)).isEqualTo(4);
+        assertThat(parser.convertStringListToIntList(equation).get(2)).isEqualTo(9);
+        assertThat(parser.convertStringListToIntList(equation).get(4)).isEqualTo(1);
+    }
 }
