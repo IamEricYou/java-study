@@ -2,7 +2,7 @@ package calculator;
 
 public class Parser {
 
-    public boolean isEmptyOrNull(String s) {
+    public boolean isNotEmptyOrNull(String s) {
         if(s == null || s == " "){
             return false;
         }
