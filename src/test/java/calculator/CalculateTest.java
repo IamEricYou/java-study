@@ -19,7 +19,8 @@ public class CalculateTest {
     public void setUp(){
         calculate = new Calculate();
         parser = new Parser();
-        equation = new ArrayList<String>();
+        //Diamond operator
+        equation = new ArrayList<>();
     }
 
     @Test
