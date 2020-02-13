@@ -30,30 +30,34 @@ public class ParserTest {
 
     @Test
     public void splitCommaTest(){
-        assertThat(parser.splitByBlank("Hello World").get(0)).isEqualTo("Hello");
-        assertThat(parser.splitByBlank("Hello World").get(1)).isEqualTo("World");
+        List<String> testPhrase = parser.splitByBlank("Hello World");
+        assertThat(testPhrase.get(0)).isEqualTo("Hello");
+        assertThat(testPhrase.get(1)).isEqualTo("World");
     }
 
     @Test
     public void extractNumFromStringEquationTest(){
         equation = parser.splitByBlank("4 + 8 + 7");
-        assertThat(parser.getNumbersFromEquation(equation).get(0)).isEqualTo("4");
-        assertThat(parser.getNumbersFromEquation(equation).get(1)).isEqualTo("8");
-        assertThat(parser.getNumbersFromEquation(equation).get(2)).isEqualTo("7");
+        List<String> stringNum = parser.getNumbersFromEquation(equation);
+        assertThat(stringNum.get(0)).isEqualTo("4");
+        assertThat(stringNum.get(1)).isEqualTo("8");
+        assertThat(stringNum.get(2)).isEqualTo("7");
     }
 
     @Test
     public void extractOperatorFromStringEquationTest(){
         equation = parser.splitByBlank("4 + 8 * 7");
-        assertThat(parser.getOperatorsFromEquation(equation).get(0)).isEqualTo("+");
-        assertThat(parser.getOperatorsFromEquation(equation).get(1)).isEqualTo("*");
+        List<String> stringNum = parser.getOperatorsFromEquation(equation);
+        assertThat(stringNum.get(0)).isEqualTo("+");
+        assertThat(stringNum.get(1)).isEqualTo("*");
     }
 
     @Test
     public void convertStringListToIntListTest(){
         equation = parser.splitByBlank("4 5 9 0 1");
-        assertThat(parser.convertStringListToIntList(equation).get(0)).isEqualTo(4);
-        assertThat(parser.convertStringListToIntList(equation).get(2)).isEqualTo(9);
-        assertThat(parser.convertStringListToIntList(equation).get(4)).isEqualTo(1);
+        List<Integer> number = parser.convertStringListToIntList(equation);
+        assertThat(number.get(0)).isEqualTo(4);
+        assertThat(number.get(2)).isEqualTo(9);
+        assertThat(number.get(4)).isEqualTo(1);
     }
 }
