@@ -18,10 +18,15 @@ public class ParserTest {
     }
 
     @Test
-    public void getFalseIfInputIsNullOrEmpty(){
+    public void getFalseIfInputIsNullOrEmptyTest(){
         assertThat(parser.isEmptyOrNull(" ")).isEqualTo(false);
         assertThat(parser.isEmptyOrNull(null)).isEqualTo(false);
         assertThat(parser.isEmptyOrNull("Hi Hello")).isEqualTo(true);
     }
 
+    @Test
+    public void splitCommaTest(){
+        assertThat(parser.splitByBlank("Hello World")[0]).isEqualTo("Hello");
+        assertThat(parser.splitByBlank("Hello World")[1]).isEqualTo("World");
+    }
 }

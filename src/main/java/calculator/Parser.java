@@ -8,4 +8,8 @@ public class Parser {
         }
         return true;
     }
+
+    public String[] splitByBlank(String text) {
+        return text.split(" ");
+    }
 }
