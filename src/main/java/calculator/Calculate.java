@@ -17,30 +17,32 @@ public class Calculate {
     }
 
     public int divide(int a, int b) {
-        try{
+        try {
             return a / b;
-        }catch (ArithmeticException e){
+        } catch (ArithmeticException e) {
             System.out.println("Do not divide by zero");
         }
         return 0;
     }
 
-    public int calculate(List<String> equation) {
-        int result = Integer.parseInt(equation.get(0));
-        for (int i = 1; i <= (equation.size())/2; i++) {
-            switch (equation.get(2*i - 1)) {
+    public int calculate(List<Integer> numList, List<String> operatorList) {
+        int result = numList.get(0);
+        for (int i = 0; i < operatorList.size(); i++) {
+            switch (operatorList.get(i)) {
                 case "+":
-                    result = result + Integer.parseInt(equation.get(i*2));
+                    result = add(result, numList.get(i+1));
                     break;
                 case "-":
-                    result = result - Integer.parseInt(equation.get(i*2));
+                    result = subtract(result, numList.get(i+1));
                     break;
                 case "*":
-                    result = result * Integer.parseInt(equation.get(i*2));
+                    result = multiply(result, numList.get(i+1));
                     break;
                 case "/":
-                    result = result / Integer.parseInt(equation.get(i*2));
+                    result = divide(result, numList.get(i+1));
                     break;
+                default:
+                    System.out.println("Error");
             }
         }
         return result;
