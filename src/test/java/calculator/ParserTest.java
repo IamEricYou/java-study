@@ -19,9 +19,9 @@ public class ParserTest {
 
     @Test
     public void getFalseIfInputIsNullOrEmptyTest(){
-        assertThat(parser.isEmptyOrNull(" ")).isEqualTo(false);
-        assertThat(parser.isEmptyOrNull(null)).isEqualTo(false);
-        assertThat(parser.isEmptyOrNull("Hi Hello")).isEqualTo(true);
+        assertThat(parser.isNotEmptyOrNull(" ")).isEqualTo(false);
+        assertThat(parser.isNotEmptyOrNull(null)).isEqualTo(false);
+        assertThat(parser.isNotEmptyOrNull("Hi Hello")).isEqualTo(true);
     }
 
     @Test
