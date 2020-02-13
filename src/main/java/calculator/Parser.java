@@ -14,7 +14,8 @@ public class Parser {
     }
 
     public List<String> splitByBlank(String text) {
-
+        //List.of() needs 1.9+
+        //Arrays.asList returns a mutable list while the list returned by List.of is immutable
         return Arrays.asList(text.split("\\s* \\s*"));
     }
 }

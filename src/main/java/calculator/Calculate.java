@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculate {
     public int add(int a, int b) {
         return a + b;
@@ -22,22 +25,21 @@ public class Calculate {
         return 0;
     }
 
-    public int calculate(String s) {
-        String[] string = s.split(" ");
-        int result = Integer.parseInt(string[0]);
-        for (int i = 1; i <= (string.length)/2; i++) {
-            switch (string[2*i - 1]) {
+    public int calculate(List<String> equation) {
+        int result = Integer.parseInt(equation.get(0));
+        for (int i = 1; i <= (equation.size())/2; i++) {
+            switch (equation.get(2*i - 1)) {
                 case "+":
-                    result = result + Integer.parseInt(string[i*2]);
+                    result = result + Integer.parseInt(equation.get(i*2));
                     break;
                 case "-":
-                    result = result - Integer.parseInt(string[i*2]);
+                    result = result - Integer.parseInt(equation.get(i*2));
                     break;
                 case "*":
-                    result = result * Integer.parseInt(string[i*2]);
+                    result = result * Integer.parseInt(equation.get(i*2));
                     break;
                 case "/":
-                    result = result / Integer.parseInt(string[i*2]);
+                    result = result / Integer.parseInt(equation.get(i*2));
                     break;
             }
         }

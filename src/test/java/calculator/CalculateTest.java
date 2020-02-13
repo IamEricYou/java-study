@@ -4,50 +4,63 @@ package calculator;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculateTest {
 
-    Calculate calculate;
+    private Calculate calculate;
+    private Parser parser;
+    private List<String> equation;
 
     @Before
     public void setUp(){
         calculate = new Calculate();
+        parser = new Parser();
+        equation = new ArrayList<String>();
     }
 
     @Test
     public void addtionTest() {
-        int result = calculate.calculate("2 + 3");
-        assertThat(result).isEqualTo(5);
+        equation = parser.splitByBlank("4 + 7");
+        int result = calculate.calculate(equation);
+        assertThat(result).isEqualTo(11);
     }
 
     @Test
     public void subtractionTest() {
-        int result = calculate.calculate("10 - 4");
-        assertThat(result).isEqualTo(6);
+        equation = parser.splitByBlank("10 - 3");
+        int result = calculate.calculate(equation);
+        assertThat(result).isEqualTo(7);
     }
 
     @Test
     public void addtionTestHasMoreNumber() {
-        int result = calculate.calculate("3 + 3 + 5 - 7");
-        assertThat(result).isEqualTo(4);
+        equation = parser.splitByBlank("4 + 7 + 10");
+        int result = calculate.calculate(equation);
+        assertThat(result).isEqualTo(21);
     }
 
     @Test
     public void multiplyTest() {
-        int result = calculate.calculate("3 * 5");
-        assertThat(result).isEqualTo(15);
+        equation = parser.splitByBlank("4 * 7");
+        int result = calculate.calculate(equation);
+        assertThat(result).isEqualTo(28);
     }
 
     @Test
     public void divideTest() {
-        int result = calculate.calculate("15 / 3");
+        equation = parser.splitByBlank("35 / 7");
+        int result = calculate.calculate(equation);
         assertThat(result).isEqualTo(5);
     }
 
     @Test(expected = ArithmeticException.class)
     public void divideByZeroTest() {
-        int result = calculate.calculate("15 / 0");
+        equation = parser.splitByBlank("4 / 0");
+        int result = calculate.calculate(equation);
     }
 
 }

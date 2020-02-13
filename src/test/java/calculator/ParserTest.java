@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class ParserTest {
 
-    Parser parser;
+    private Parser parser;
 
     @Before
     public void setUp() throws Exception {
