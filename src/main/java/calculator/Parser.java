@@ -1,7 +1,11 @@
 package calculator;
 
 public class Parser {
-    public void checkInputIsInvalid(String input) {
 
+    public boolean isEmptyOrNull(String s) {
+        if(s == null || s == " "){
+            return false;
+        }
+        return true;
     }
 }
