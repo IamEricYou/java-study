@@ -35,10 +35,17 @@ public class ParserTest {
     }
 
     @Test
-    public void extractNumFromStringEquation(){
+    public void extractNumFromStringEquationTest(){
         equation = parser.splitByBlank("4 + 8 + 7");
         assertThat(parser.getNumbersFromEquation(equation).get(0)).isEqualTo("4");
         assertThat(parser.getNumbersFromEquation(equation).get(1)).isEqualTo("8");
         assertThat(parser.getNumbersFromEquation(equation).get(2)).isEqualTo("7");
+    }
+
+    @Test
+    public void extractOperatorFromStringEquationTest(){
+        equation = parser.splitByBlank("4 + 8 * 7");
+        assertThat(parser.getOperatorsFromEquation(equation).get(0)).isEqualTo("+");
+        assertThat(parser.getOperatorsFromEquation(equation).get(1)).isEqualTo("*");
     }
 }

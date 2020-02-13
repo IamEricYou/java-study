@@ -26,12 +26,22 @@ public class Parser {
         return Arrays.asList(text.split(BLANK_PATTERN));
     }
 
-    public List<String> getNumbersFromEquation(List<String> text) {
+    public List<String> getNumbersFromEquation(List<String> equation) {
         List<String> numList = new ArrayList<>();
-        //Numbers are placed on only odd index.
-        for(int i = 0; i < text.size(); i = i+2){
-            numList.add(text.get(i));
+        //Numbers are placed on only even index.
+        for(int i = 0; i < equation.size(); i = i+2){
+            numList.add(equation.get(i));
         }
         return numList;
+    }
+
+    public List<String> getOperatorsFromEquation(List<String> equation) {
+        List<String> operatorList = new ArrayList<>();
+        //Numbers are placed on only odd index.
+
+        for(int i = 1; i < equation.size(); i = i+2){
+            operatorList.add(equation.get(i));
+        }
+        return operatorList;
     }
 }
