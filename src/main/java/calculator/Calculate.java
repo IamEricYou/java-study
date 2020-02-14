@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculate {
     public int add(int a, int b) {
         return a + b;
@@ -14,31 +17,32 @@ public class Calculate {
     }
 
     public int divide(int a, int b) {
-        try{
+        try {
             return a / b;
-        }catch (ArithmeticException e){
+        } catch (ArithmeticException e) {
             System.out.println("Do not divide by zero");
         }
         return 0;
     }
 
-    public int calculate(String s) {
-        String[] string = s.split(" ");
-        int result = Integer.parseInt(string[0]);
-        for (int i = 1; i <= (string.length)/2; i++) {
-            switch (string[2*i - 1]) {
+    public int calculate(List<Integer> numList, List<String> operatorList) {
+        int result = numList.get(0);
+        for (int i = 0; i < operatorList.size(); i++) {
+            switch (operatorList.get(i)) {
                 case "+":
-                    result = result + Integer.parseInt(string[i*2]);
+                    result = add(result, numList.get(i+1));
                     break;
                 case "-":
-                    result = result - Integer.parseInt(string[i*2]);
+                    result = subtract(result, numList.get(i+1));
                     break;
                 case "*":
-                    result = result * Integer.parseInt(string[i*2]);
+                    result = multiply(result, numList.get(i+1));
                     break;
                 case "/":
-                    result = result / Integer.parseInt(string[i*2]);
+                    result = divide(result, numList.get(i+1));
                     break;
+                default:
+                    System.out.println("Error");
             }
         }
         return result;

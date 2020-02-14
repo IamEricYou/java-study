@@ -1,50 +1,83 @@
 package calculator;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculateTest {
 
+    private Calculate calculate;
+    private Parser parser;
+    private List<String> equation;
+    private List<Integer> numList;
+    private List<String> operatorList;
+
+    @Before
+    public void setUp(){
+        calculate = new Calculate();
+        parser = new Parser();
+        //Diamond operator
+        equation = new ArrayList<>();
+        numList = new ArrayList<>();
+        operatorList = new ArrayList<>();
+    }
+
     @Test
     public void addtionTest() {
-        Calculate calculate = new Calculate();
-        int result = calculate.calculate("2 + 3");
-        assertThat(result).isEqualTo(5);
+        equation = parser.splitByBlank("4 + 7 + 9 + 10");
+        numList = parser.convertStringListToIntList(parser.getNumbersFromEquation(equation));
+        operatorList = parser.getOperatorsFromEquation(equation);
+        int result = calculate.calculate(numList, operatorList);
+        assertThat(result).isEqualTo(30);
     }
 
     @Test
     public void subtractionTest() {
-        Calculate calculate = new Calculate();
-        int result = calculate.calculate("10 - 4");
-        assertThat(result).isEqualTo(6);
+        equation = parser.splitByBlank("10 - 3");
+        numList = parser.convertStringListToIntList(parser.getNumbersFromEquation(equation));
+        operatorList = parser.getOperatorsFromEquation(equation);
+        int result = calculate.calculate(numList, operatorList);
+        assertThat(result).isEqualTo(7);
     }
 
     @Test
     public void addtionTestHasMoreNumber() {
-        Calculate calculate = new Calculate();
-        int result = calculate.calculate("3 + 3 + 5 - 7");
-        assertThat(result).isEqualTo(4);
+        equation = parser.splitByBlank("4 + 7 + 10");
+        numList = parser.convertStringListToIntList(parser.getNumbersFromEquation(equation));
+        operatorList = parser.getOperatorsFromEquation(equation);
+        int result = calculate.calculate(numList, operatorList);
+        assertThat(result).isEqualTo(21);
     }
 
     @Test
     public void multiplyTest() {
-        Calculate calculate = new Calculate();
-        int result = calculate.calculate("3 * 5");
-        assertThat(result).isEqualTo(15);
+        equation = parser.splitByBlank("4 * 7");
+        numList = parser.convertStringListToIntList(parser.getNumbersFromEquation(equation));
+        operatorList = parser.getOperatorsFromEquation(equation);
+        int result = calculate.calculate(numList, operatorList);
+        assertThat(result).isEqualTo(28);
     }
 
     @Test
     public void divideTest() {
-        Calculate calculate = new Calculate();
-        int result = calculate.calculate("15 / 3");
+        equation = parser.splitByBlank("35 / 7");
+        numList = parser.convertStringListToIntList(parser.getNumbersFromEquation(equation));
+        operatorList = parser.getOperatorsFromEquation(equation);
+        int result = calculate.calculate(numList, operatorList);
         assertThat(result).isEqualTo(5);
     }
 
     @Test(expected = ArithmeticException.class)
     public void divideByZeroTest() {
-        Calculate calculate = new Calculate();
-        int result = calculate.calculate("15 / 0");
+        equation = parser.splitByBlank("4 / 0");
+        numList = parser.convertStringListToIntList(parser.getNumbersFromEquation(equation));
+        operatorList = parser.getOperatorsFromEquation(equation);
+        int result = calculate.calculate(numList, operatorList);
     }
+
 }
